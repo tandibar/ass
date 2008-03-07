@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: ruby_demo.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>ruby_demo.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>ruby_demo.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Tue Feb 12 00:32:45 +0100 2008</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>Script Ruby Demo</h1>
+<ul>
+<li>Einfache Dinge auf der irb zeigen
+
+</li>
+<li>Komplexeres als Ruby Datei in TextMate (auf der Kommandozeile ausführen
+oder in TextMate)
+
+</li>
+</ul>
+<h2>Konzepte der OOP</h2>
+<h3>Abstraktion</h3>
+<p>
+Jedes Objekt im System kann als ein abstraktes Modell eines Akteurs
+betrachtet werden, der Aufträge erledigen, seinen Zustand berichten und
+ändern und mit den anderen Objekten im System kommunizieren kann, ohne
+offenlegen zu müssen, wie diese Fähigkeiten implementiert sind (vgl.
+abstrakter Datentyp (ADT)). Solche Abstraktionen sind entweder Klassen (in
+der klassenbasierten Objektorientierung) oder Prototypen (in der
+prototypbasierten Programmierung).
+</p>
+<ul>
+<li><b>Klasse</b> Die Datenstruktur eines Objekts wird durch die Attribute
+(auch Eigenschaften) seiner Klassendefinition festgelegt. Das Verhalten des
+Objekts wird von den Methodern der Klasse bestimmt. Klassen können von
+anderen Klassen abgeleitet werden (Vererbung). Dabei erbt die Klasse die
+Datenstruktur (Attribute) und die Methoden von der vererbenden Klasse
+(Basisklasse).
+
+</li>
+<li><b>Prototype</b> Objekte werden durch das Clonen bereits existierender
+Objekte erzeugt und können anderen Objekten als Prototypen dienen und
+damit ihre eigenen Methoden zur Wiederverwendung zur Verfügung stellen,
+wobei die neuen Objekte nur die Unterschiede zu ihrem Prototypen-Objekt
+definieren müssen..
+
+</li>
+</ul>
+<h3>Datenkapselung</h3>
+<p>
+Als Datenkapselung bezeichnet man in der Programmierung das Verbergen von
+Implementierungsdetails. Der direkte Zugriff auf die interne Datenstruktur
+wird unterbunden und erfolgt statt dessen über definierte Schnittstellen.
+Objekte können den internen Zustand anderer Objekte nicht in unerwarteter
+Weise lesen oder ändern. Ein Objekt hat eine Schnittstelle, die darüber
+bestimmt, auf welche Weise mit dem Objekt interagiert werden kann. Dies
+verhindert das Umgehen von Invarianten des Programms.
+</p>
+<h3>Polymorphie</h3>
+<p>
+Verschiedene Objekte können auf die gleiche Nachricht unterschiedlich
+reagieren. Wird die Zuordnung einer Nachricht zur Reaktion auf die
+Nachricht erst zur Laufzeit aufgelöst, dann wird dies auch späte Bindung
+genannt.
+</p>
+<h3>Feedback</h3>
+<p>
+Verschiedene Objekte kommunizieren über einen
+Nachricht-Antwort-Mechanismus, der zu Veränderungen in den Objekten führt
+und neue Nachrichtenaufrufe erzeugt. Dafür steht die Kopplung als Index
+für den Grad des Feedback.
+</p>
+<h3>Vererbung</h3>
+<p>
+Vererbung heißt vereinfacht, dass eine abgeleitete Klasse die Methoden und
+Attribute der Basisklasse ebenfalls besitzt, also „erbt“. Somit kann
+die abgeleitete Klasse auch darauf zugreifen. Neue Arten von Objekten
+können auf der Basis bereits vorhandener Objekt-Definitionen festgelegt
+werden. Es können neue Bestandteile hinzugenommen werden oder vorhandene
+überlagert werden. Wird keine Vererbung zugelassen, so spricht man zur
+Unterscheidung oft auch von objektbasierter Programmierung.
+</p>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
