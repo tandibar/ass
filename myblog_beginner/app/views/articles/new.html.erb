@@ -1,0 +1,20 @@
+<h1>New article</h1>
+
+<% form_for :article, @article,
+            :url => { :action => 'create' }, 
+            :html => { :multipart => true } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  
+  <!-- uploading images is only possible during article creation -->
+  <p><label for="article_image_name">Image short description</label><br/>
+  <%= f.text_field :image_name  %></p>
+
+  <p><label for="article_image">Upload image to Article</label><br/>
+  <%= f.file_field :uploaded_image %></p>
+  <!-- uploading images is only possible during article creation -->
+
+  <%= submit_tag "Create" %>
+  <div class="block_spacer">&nbsp;</div>
+<% end %>
+
+<%= link_to 'Back', articles_path %>

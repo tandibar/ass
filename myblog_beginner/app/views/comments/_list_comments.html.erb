@@ -1,0 +1,21 @@
+  <div id="add_comment_to_article">
+  <%= render :partial => 'comments/add_comment' %>
+
+  <% unless @article.comments.empty? %>
+    <h2>Comments</h2>
+      
+    <% @article.comments.each do |comment| %>
+      <div id="comment_<%= comment.id %>">
+      <%= h comment.content %>
+      <div class="block_spacer">&nbsp;</div>
+      <div class="comment_author"><%= h comment.author %></div>
+      <% if comment != @article.comments.last -%>
+        <div class="block_spacer">&nbsp;</div>
+        <hr class="comment_divider_line" />
+        <div class="block_spacer">&nbsp;</div>
+      <% end %>
+      </div>  
+    <% end %>
+  <% end %>
+
+  </div>

@@ -1,0 +1,12 @@
+<% if Tag.list %>
+<div class="block_spacer">&nbsp;</div>
+
+<div id="tag_list">
+  <h3>Tags</h3>
+  <% Tag.list.each do |tag| %>
+    <% unless tag.articles.empty? %>
+    <span class="tag"><%= link_to tag.name, tags_url(:tags => tag.name) %>&nbsp;(<%= tag.articles.size %>)</span><br />
+    <% end %>
+  <% end %>
+</div>
+<% end %>

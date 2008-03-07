@@ -1,0 +1,7 @@
+<% if @article_pages.current.previous %>
+  <%= link_to 'Previous page', { :page => @article_pages.current.previous } %>
+<% end %>
+<% if @article_pages.current.next && @article_pages.current.previous %>&nbsp;|&nbsp;<% end %>
+<% if @article_pages.current.next %>
+  <%= link_to 'Next page', { :page => @article_pages.current.next } %>
+<% end %>

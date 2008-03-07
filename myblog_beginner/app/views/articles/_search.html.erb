@@ -1,0 +1,15 @@
+<% form_remote_tag :url => {:controller => 'articles', :action => 'search'},
+                   :html => { :url_for => {:controller => 'articles', :action => 'search' },
+                              :id => 'live_search_form' } do -%>
+  <label for="user_email">Suchbebriff</label><br/>
+  <input type="text_field" name="search_string" value="" id="search_string_text_field" />
+  <div id="search-activity-indicator" style="display:none"><img src="/images/activity_indicator.gif" /></div>
+<% end -%>
+
+<%= observe_field 'search_string_text_field', :url => {:controller => 'articles', :action => 'search'},
+                                              :frequency => 1.0,
+                                              :loading => 'show_activity_indicator();',
+                                              # :loading => "Element.show('search-activity-indicator');",
+                                              :complete => 'hide_activity_indicator();',
+                                              # :complete => "Element.hide('search-activity-indicator');",
+                                              :with => 'search_string' %>

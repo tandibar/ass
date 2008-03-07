@@ -1,0 +1,11 @@
+<h1>Listing articles</h1>
+
+<div id="complete_article_list">
+  <%= render :partial => 'complete_article_list' %>
+</div>
+
+<br />
+
+<% if logged_in? -%>
+  <%= link_to 'New article', :action => 'new' %>
+<% end -%>

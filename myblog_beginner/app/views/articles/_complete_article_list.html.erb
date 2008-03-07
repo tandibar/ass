@@ -1,0 +1,42 @@
+  <div class="article_pagination">
+    <%= render :partial => 'article_pagination' %>
+    <div class="block_spacer">&nbsp;</div>
+  </div>
+
+  <div id="listing_articles_table">
+      <% for article in @articles %>
+      <div class="article_in_row article_row_<%= article.id%2 %>">
+        <div class="article_attribute_row">
+          <div class="article_attribute_content">
+            <h1 class="article_title"><%= link_to(h(article.title), article_path(article)) %></h1><div id="author_small_under_title">by&nbsp;<%= h article.author.full_name %>,&nbsp;<%= time_ago_in_words(article.created_at) %>&nbsp;ago</div>
+          </div>
+        </div>
+        <div class="article_attribute_row">
+          <div class="article_attribute_content">
+            <%= truncate(h(article.content), 300, '&nbsp;...&nbsp;' + link_to('[read more]', :action => 'show', :id => article)) %>
+          </div>
+        </div>
+        <% if logged_in? -%>
+          <div>
+            <div class="block_spacer">&nbsp;</div>
+            <div>
+              In:&nbsp;<span class='article_in_tags'><%= h article.tags.join(' ') %></span>
+            </div>
+            <div class="article_actions"><%= link_to 'Show', article_url(article) %>&nbsp;|&nbsp;<%= link_to 'Edit', :action => 'edit', :id => article %>&nbsp;|&nbsp;<%= link_to 'Destroy', { :action => 'destroy', :id => article }, :confirm => 'Are you sure?', :method => :post %></div>
+          </div>
+        <% end -%>
+        <% if article != @articles.last -%>
+          <div>
+            <div class="block_spacer">&nbsp;</div>
+            <hr class="article_divider_line" />
+            <div class="block_spacer">&nbsp;</div>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+  </div>
+
+  <div class="article_pagination">
+    <div class="block_spacer">&nbsp;</div>
+    <%= render :partial => 'article_pagination' %>
+  </div>

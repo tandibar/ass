@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+rails:
+  id: 1
+  name: Rails 
+ruby:
+  id: 2
+  name: Ruby
+study:
+  id: 3
+  name: Study
+javascript:
+  id: 4
+  name: Javascript
+programming:
+  id: 5
+  name: Programming
+food:
+  id: 6
+  name: Food

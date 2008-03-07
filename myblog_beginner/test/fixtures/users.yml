@@ -1,0 +1,28 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+jessie:
+  id: 1
+  email: jessie.summers@hot-stuff.com
+  firstname: Jessie
+  lastname: Summers
+  password: 9c01553a2f69d6b0db4eb7eff426e18180ca187a # mypassword
+  salt: 0.954372486524438-salt-ljkhcawb4-Thu Oct 11 10:25:13 +0200 2007
+  created_at: <%= 10.days.ago.to_s(:db) %>
+
+krystal:
+  id: 2
+  email: krystal.steel@hot-stuff.com
+  firstname: Krystal
+  lastname: Steal
+  password: f8e70fb462cadeaf7e2541e58010827fb77b144d # mypassword
+  salt: 0.366142437728097-salt-ljkhcawb4-Thu Oct 11 10:34:14 +0200 2007
+  created_at: <%= Time.now.yesterday.to_s(:db) %>
+
+delete_bob:
+  id: 3
+  email: bob.delete@end-of-world.com
+  firstname: Bob
+  lastname: Delete
+  password: 4d34231a56229fd9762db3f38c0236f7f6e4dd0d # mypassword
+  salt: 0.492576409435359-salt-ljkhcawb4-Thu Oct 11 10:39:07 +0200 2007
+  created_at: <%= Time.now.to_s(:db) %>
+  

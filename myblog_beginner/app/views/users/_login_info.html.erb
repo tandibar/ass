@@ -1,0 +1,5 @@
+<% unless logged_in? %>
+  <%= link_to "Login", :controller => "users", :action => "login" %>          
+<% else %>
+  Welcome <%= h session[:user].firstname %> <%= h session[:user].lastname %> | <%= link_to "Logout", :controller => "users", :action => "logout" %>
+<% end %>

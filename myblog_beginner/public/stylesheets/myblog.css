@@ -1,0 +1,118 @@
+/* ======================================= */
+/* = MyBlog specific styling information = */
+/* ======================================= */
+
+#listing_articles_table {
+  margin-top: 10px;
+}
+
+.article_attribute {
+  text-align: right;
+  font-style: normal;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.article_actions {
+  text-align: right;
+  font-size: 80%;
+}
+
+.article_row_0 {
+/*  background-color: #eee;*/
+}
+
+div.block_spacer {
+	margin: 0;
+	height: 14px;
+/*	background-color: #FFFFFF;*/
+	line-height: 0px;
+	font-size: 0px;
+}
+
+hr.article_divider_line, hr.comment_divider_line {
+  width: 50%;
+  margin: auto;
+  border-color: #aaa;
+}
+
+.article_in_row {
+  width: 90%;
+  margin: auto;
+}
+
+h1.article_title {
+  padding: 0;
+}
+
+.article_attribute_content, .article_attribute {
+  padding-bottom: 5px;
+}
+
+img.article_image {
+  width: 100px;
+}
+
+.a_with_no_effect:focus, .a_with_no_effect:hover {
+  text-decoration: none;
+  background-color: #1F1E2E;
+}
+
+#author_small_under_title {
+  width: 100%;
+  text-align: right;
+  font-size: 75%;
+  margin: -5px 0px 10px 0px;
+}
+
+.comment_in_list {
+	border-top: 1px #ccc solid;
+}
+
+.comment_row_1 {
+  background-color: #eee;
+}
+
+#css_copyright_info {
+  padding-top: 10px;
+  text-align: left;
+  font-size: 90%;
+}
+
+.article_pagination {
+  width: 100%;
+  margin: auto;
+  text-align: right;
+}
+
+#comments_list {
+  width: 80%;
+  margin: auto;
+}
+
+.comment_author {
+  text-align: right;
+  font-style: italic;
+}
+
+span.tag {
+  font-style: italic;
+}
+
+span.article_in_tags {
+  color: #1F1E2E;
+  font-style: italic;
+}
+
+#flash_notice {
+  color: green;
+  position: absolute;
+  z-index: 50;
+  width: 100px;
+  height: 30px;
+  margin: auto;
+  left: 50%;
+  top: 100px;
+  border: 1px solid #999;
+  text-align: center;
+}
