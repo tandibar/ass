@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   
-  fixtures :articles
+  fixtures :articles, :authors, :images
   
   def test_should_have_comments
     article = articles(:article_with_comment)
