@@ -1,9 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :authors
+  map.resources :authors, :has_many => [:comments, :articles]
 
-  map.resources :comments
-
-  map.resources :articles
+  map.resources :articles, :has_many => :comments, :has_one => :author
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -36,6 +34,6 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  # map.connect ':controller/:action/:id'
+  # map.connect ':controller/:action/:id.:format'
 end
