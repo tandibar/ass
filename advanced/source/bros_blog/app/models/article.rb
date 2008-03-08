@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+  class CommentDeletionNotAllowed < RuntimeError; end
+  
   belongs_to :image
   belongs_to :author
   has_many :comments do
@@ -7,6 +9,15 @@ class Article < ActiveRecord::Base
         author.comments.build(attributes.merge(:article => proxy_owner))
       else
         AnonymousComment.new(attributes.merge(:article => proxy_owner))
+      end
+    end
+    
+    def delete(comments, author)
+      comments = [comments] unless comments.respond_to?(:all?)
+      if comments.all? { |comment| comment.article.author == author }
+        super(comments)
+      else
+        raise Article::CommentDeletionNotAllowed, "Deletion of Comments only allowed by Author of Article."
       end
     end
   end

@@ -12,6 +12,11 @@ class Test::Unit::TestCase
     yield
     ActiveRecord::Base.enable_validation!    
   end
+  
+  def login_user
+    @request.session[:user] = authors(:jessie)
+  end
+  
 end
 
 

@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   
-  fixtures :articles, :authors, :images
+  fixtures :articles, :comments, :authors, :images
   
   def test_should_have_comments
     article = articles(:article_with_comment)
@@ -57,4 +57,15 @@ class ArticleTest < ActiveSupport::TestCase
     assert_kind_of AuthorComment, comment
   end
   
+  def test_should_only_delete_comments_if_given_author_is_author_of_article
+    assert_difference "articles(:article_with_comment).comments.count", -1 do
+      articles(:article_with_comment).comments.delete(comments(:first_comment), authors(:jessie))
+    end
+  end
+  
+  def test_should_raise_exception_if_author_trys_to_delete_comment_and_is_not_author_of_article
+    assert_raise(Article::CommentDeletionNotAllowed) do
+      articles(:article_with_comment).comments.delete(comments(:first_comment), authors(:author_with_articles))
+    end
+  end
 end

@@ -88,9 +88,4 @@ class ArticlesControllerTest < ActionController::TestCase
     assert_redirected_to articles_path
   end
   
-  private
-    
-    def login_user
-      @request.session[:user] = authors(:jessie)
-    end
 end
