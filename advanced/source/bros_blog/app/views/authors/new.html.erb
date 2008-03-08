@@ -1,0 +1,46 @@
+<h1>New author</h1>
+
+<%= error_messages_for :author %>
+
+<% form_for(@author) do |f| %>
+  <p>
+    <b>Firstname</b><br />
+    <%= f.text_field :firstname %>
+  </p>
+
+  <p>
+    <b>Lastname</b><br />
+    <%= f.text_field :lastname %>
+  </p>
+
+  <p>
+    <b>Email</b><br />
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <b>Salt</b><br />
+    <%= f.text_field :salt %>
+  </p>
+
+  <p>
+    <b>Salted password</b><br />
+    <%= f.text_field :salted_password %>
+  </p>
+
+  <p>
+    <b>Token</b><br />
+    <%= f.text_field :token %>
+  </p>
+
+  <p>
+    <b>Token expiry</b><br />
+    <%= f.datetime_select :token_expiry %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', authors_path %>
