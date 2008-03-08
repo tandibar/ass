@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comments = Comment.find(:all)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :template => 'layouts/404', :status => 404 }
       format.xml  { render :xml => @comments }
     end
   end

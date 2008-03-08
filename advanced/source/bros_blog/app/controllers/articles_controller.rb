@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  
+  before_filter :author_logged_in, :except => [ :index, :show ]
+  
   # GET /articles
   # GET /articles.xml
   def index
@@ -82,4 +85,16 @@ class ArticlesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+  private
+    
+    def author_logged_in
+      unless session[:user]
+        render :template => "layouts/401", :status => 401
+      else
+        true
+      end
+    end
+    
 end

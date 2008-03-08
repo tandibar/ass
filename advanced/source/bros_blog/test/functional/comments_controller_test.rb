@@ -1,10 +1,18 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
-  def test_should_get_index
-    get :index
+  
+  fixtures :comments
+  
+  def test_should_get_404_for_index_in_html_format
+    get :index, :article_id => 1
+    assert_response 404
+    assert_template "layouts/404"
+  end
+
+  def test_should_get_index_for_xml_format
+    get :index, :article_id => 1, :format => :xml
     assert_response :success
-    assert_not_nil assigns(:comments)
   end
 
   def test_should_get_new

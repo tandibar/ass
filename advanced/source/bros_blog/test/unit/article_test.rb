@@ -41,4 +41,10 @@ class ArticleTest < ActiveSupport::TestCase
     assert_kind_of Image, article.image, "There should be an object of kind Image."
   end
   
+  def test_should_save_with_valid_attributes
+    assert_difference "Article.count", 1 do
+      Article.create(:title => "Should Save", :content => "Should save content", :author => authors(:jessie))
+    end
+  end
+  
 end
