@@ -47,4 +47,14 @@ class ArticleTest < ActiveSupport::TestCase
     end
   end
   
+  def test_should_create_anonymous_comment_for_article_if_no_author_is_given
+    comment = articles(:article_with_comment).comments.build
+    assert_kind_of AnonymousComment, comment
+  end
+  
+  def test_should_create_author_comment_for_article_if_author_is_given
+    comment = articles(:article_with_comment).comments.build({:content => "Content for Comment"}, authors(:jessie))
+    assert_kind_of AuthorComment, comment
+  end
+  
 end
