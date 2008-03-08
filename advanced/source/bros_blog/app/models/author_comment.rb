@@ -1,0 +1,3 @@
+class AuthorComment < Comment
+  
+end

@@ -1,0 +1,3 @@
+class AnonymusComment < Comment
+  
+end
