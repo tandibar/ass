@@ -23,12 +23,6 @@ class CommentTest < ActiveSupport::TestCase
     assert comment.errors.invalid?(:content), "Content is not invalid."
   end
   
-  def test_should_have_an_author_email
-    comment = Comment.new
-    assert !comment.valid?, "Comment should be invalid."
-    assert comment.errors.invalid?(:author_email), "Author Email is not invalid."
-  end
-  
   def test_might_have_a_homepage
     assert_nothing_raised(NoMethodError) { Comment.new(:homepage => 'http://railsbros.de') }
   end

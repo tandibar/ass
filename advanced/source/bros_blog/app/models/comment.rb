@@ -14,7 +14,6 @@ class Comment < ActiveRecord::Base
   belongs_to :article
   
   validates_presence_of :content
-  validates_presence_of :author_email
   validates_presence_of :article
   validates_presence_of :article_id
   

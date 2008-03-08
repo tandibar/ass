@@ -1,3 +1,0 @@
-class AnonymusComment < Comment
-  
-end
