@@ -1,15 +1,7 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  title: MyString
-  content: MyText
-  article_id: 1
-  author_email: MyString
-  author_id: 1
-
-two:
-  title: MyString
-  content: MyText
-  article_id: 1
-  author_email: MyString
-  author_id: 1
+first_comment:
+  content: Nice Blog you got
+  article: article_with_comment
+  author_email: tera.patrick@vivid.com
+  homepage: http://vivid.com

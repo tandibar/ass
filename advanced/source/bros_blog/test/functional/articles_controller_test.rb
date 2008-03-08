@@ -1,7 +1,12 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class ArticlesControllerTest < ActionController::TestCase
+  fixtures :articles
+
   def test_should_get_index
+    article = Article.new
+    Article.expects(:find).with(:all).returns([article])
+    
     get :index
     assert_response :success
     assert_not_nil assigns(:articles)
@@ -24,7 +29,7 @@ class ArticlesControllerTest < ActionController::TestCase
     get :show, :id => articles(:one).id
     assert_response :success
   end
-
+  
   def test_should_get_edit
     get :edit, :id => articles(:one).id
     assert_response :success

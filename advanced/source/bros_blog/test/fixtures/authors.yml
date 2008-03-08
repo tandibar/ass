@@ -1,19 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  firstname: MyString
-  lastname: MyString
-  email: MyString
-  salt: MyString
-  salted_password: MyString
-  token: MyString
-  token_expiry: 2008-03-08 11:07:05
-
-two:
-  firstname: MyString
-  lastname: MyString
-  email: MyString
-  salt: MyString
-  salted_password: MyString
-  token: MyString
+jessie:
+  firstname: Jessie
+  lastname: Summers
+  email: jessie.summers@hotstuff.com
+  salt: 90t490at34aegja390
+  salted_password: TBD
+  token: ijo;ca;ioawfvwj;aj;39057[V2P]
   token_expiry: 2008-03-08 11:07:05

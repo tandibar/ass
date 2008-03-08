@@ -1,8 +1,44 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+  
+  fixtures :articles
+  
+  def test_should_have_comments
+    article = articles(:article_with_comment)
+    assert_not_nil article.comments, "Comments should not be nil."
+    assert_kind_of Array, article.comments, "There should be an object of kind Array."
   end
+  
+  def test_should_have_a_title
+    article = Article.new
+    assert !article.valid?, "Article should be invalid."
+    assert article.errors.invalid?(:title), "Title is not invalid."
+  end
+  
+  def test_should_have_a_content
+    article = Article.new
+    assert !article.valid?, "Article should be invalid."
+    assert article.errors.invalid?(:content), "Content is not invalid."
+  end
+  
+  def test_should_have_a_author
+    article = Article.new
+    assert !article.valid?, "Article is not invalid."
+    assert article.errors.invalid?(:author), "There is an Author where there should be none."
+    assert article.errors.invalid?(:author_id), "The author_id is not invalid."
+  end
+  
+  def test_should_belong_to_an_author
+    article = articles(:article_with_author)
+    assert_not_nil article.author, "Author should not be nil."
+    assert_kind_of Author, article.author, "There should be an object of kind Author."
+  end
+  
+  def test_should_have_an_image
+    article = articles(:article_with_image)
+    assert_not_nil article.image, "Image should not be nil."
+    assert_kind_of Image, article.image, "There should be an object of kind Image."
+  end
+  
 end
