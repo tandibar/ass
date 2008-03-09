@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="505"
+   name=""
+   committed-date="2006-05-05T19:47:14.152906Z"
+   url="svn://localhost/Pythia/trunk/Ressources/Rails%20Architecture.graffle"
+   last-author="tyler"
+   kind="dir"
+   uuid="9103f1ff-21fe-0310-8ee6-9d3f7c4b56ef"
+   repos="svn://localhost"
+   revision="544"/>
+<entry
+   committed-rev="505"
+   name="data.plist"
+   text-time="2006-05-05T12:31:01.000000Z"
+   committed-date="2006-05-05T19:47:14.152906Z"
+   checksum="3ccb637781d31654f14811cf52222dc1"
+   last-author="tyler"
+   kind="file"/>
+</wc-entries>

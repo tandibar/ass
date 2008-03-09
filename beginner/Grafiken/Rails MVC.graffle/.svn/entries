@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="500"
+   name=""
+   committed-date="2006-05-02T17:13:00.899529Z"
+   url="svn://localhost/Pythia/trunk/Ressources/Rails%20MVC.graffle"
+   last-author="tyler"
+   kind="dir"
+   repos="svn://localhost"
+   revision="544"/>
+<entry
+   committed-rev="500"
+   name="data.plist"
+   text-time="2006-05-02T10:27:37.000000Z"
+   committed-date="2006-05-02T17:13:00.899529Z"
+   checksum="edeb425ca5fe84ff4299ca06397f4632"
+   last-author="tyler"
+   kind="file"/>
+</wc-entries>
