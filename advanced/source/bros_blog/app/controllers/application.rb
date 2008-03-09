@@ -19,3 +19,21 @@ class ApplicationController < ActionController::Base
     end
   
 end
+
+module SessionUserExtension
+end
+
+class ActionController::Base
+  # include SessionUserExtension
+  class << session
+    def user=(user)
+      reset_session
+      session[:user] ||= {}
+      session[:user][:id], session[:user][:class] = user.id, user.class
+    end
+    
+    def user
+      session[:user][:class].camelize.constanize.send(:find, session[:user][:id])
+    end
+  end
+end
