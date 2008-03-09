@@ -1,0 +1,28 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+jessie:
+  firstname: Jessie
+  lastname: Summers
+  email: jessie.summers@hotstuff.com
+  salt: 90t490at34aegja390
+  salted_password: TBD
+  token: ijo;ca;ioawfvwj;aj;39057[V2P]
+  token_expiry: 2008-03-08 11:07:05
+  
+author_with_articles:
+  firstname: Hans
+  lastname: Wurst
+  email: hans@wurst.de
+  salt: l;raighargh;klr
+  salted_password: TBD
+  token: aklrjgharkjghkl;ga
+  token_expiry: <%= Time.now + 1.day %>
+
+author_with_comments:
+  firstname: Kai
+  lastname: Knackstedt
+  email: kai@spasskasse.de
+  salt: l;raighargh;klr
+  salted_password: TBD
+  token: aklrjgharkjghkl;ga
+  token_expiry: <%= Time.now + 1.day %>

@@ -1,0 +1,21 @@
+<div id="comment_add_form">
+  
+  <h3>Add new Comment</h3>
+  <%= error_messages_for 'comment' %>
+  
+  <% form_remote_for :comment, @comment, :url => article_comments_path(@article) do |f| %>
+  
+    <p><label for="comment_author">Name</label><br/>
+    <%= f.text_field :author %></p>
+
+    <p><label for="comment_email">Email</label><br/>
+    <%= f.text_field :email %></p>
+  
+    <p><label for="comment_content">Text</label><br/>
+    <%= f.text_area :content %></p>
+  
+    <%= submit_tag 'Save' %>
+  <% end %>
+  
+  <br />
+</div>

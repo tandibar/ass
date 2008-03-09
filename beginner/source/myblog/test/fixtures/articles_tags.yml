@@ -1,0 +1,29 @@
+first_rails:
+  article_id: 1
+  tag_id: 1
+  
+first_ruby:
+  article_id: 1
+  tag_id: 2
+  
+second_study:
+  article_id: 2
+  tag_id: 3
+  
+<% 42.times do |n| %>
+article_<%= 100+n %>_study:
+  article_id: <%= 100+n %>
+  tag_id: <%= rand(6) %>
+<% end %>
+  
+<% 5.times do |n| %>
+article_<%= 500+n %>_study:
+  article_id: <%= 500+n %>
+  tag_id: <%= rand(6) %>
+<% end %>
+  
+<% 7.times do |n| %>
+article_<%= 700+n %>_study:
+  article_id: <%= 700+n %>
+  tag_id: <%= rand(6) %>
+<% end %>

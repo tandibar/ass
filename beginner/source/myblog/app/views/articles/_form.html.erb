@@ -1,0 +1,14 @@
+<%= error_messages_for 'article' %>
+
+<!--[form:article]-->
+<p><label for="article_title">Title</label><br/>
+<%= f.text_field :title  %></p>
+
+<p><label for="article_tags">Tags</label><br/>
+<input type="text" name="article[tags_as_string]" value="<%= h @article.tags.join(' ') %>" id="article_tags">
+</p>
+
+<p><label for="article_content">Content</label><br/>
+<%= f.text_area :content  %></p>
+<!--[eoform:article]-->
+

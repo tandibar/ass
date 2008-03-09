@@ -1,0 +1,22 @@
+<h1><%= h @article.title %></h1>
+<div id="author_small_under_title">by&nbsp;<%= h @article.author.full_name %>,&nbsp;<%= time_ago_in_words(@article.created_at) %>&nbsp;ago</div>
+
+<div id="article_detail_content">
+  <% if @article.image_url %>
+    <%= image_tag('/uploads/' + @article.image_url, :class => 'framed article_image float_left') %>
+  <% end %>
+  <p><%= h @article.content %></p>
+  In:&nbsp;<span class='article_in_tags'><%= h @article.tags.join(' ') %></span>
+  
+  <% if logged_in? -%>
+    <div class="article_actions">
+      <%= link_to 'Edit', :action => 'edit', :id => @article %> |
+      <%= link_to 'Back', :action => 'list' %>
+    </div>
+  <% end %>
+    
+</div>
+
+<div id="comments_list">
+  <%= render :partial => 'comments/list_comments' %>
+</div>

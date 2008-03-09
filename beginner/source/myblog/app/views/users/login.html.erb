@@ -1,0 +1,12 @@
+<div class="block_spacer">&nbsp;</div>
+<% form_for :user, @user,
+            :url => { :action => 'login' } do |f|  %>
+  <p><label for="user_email">Email</label><br/>
+  <%= f.text_field :email %></p>
+  
+  <p><label for="user_password">Password</label><br/>
+  <%= f.password_field :password %></p>
+  
+  <%= submit_tag "Login" %>
+  <div class="block_spacer">&nbsp;</div>
+<% end %>

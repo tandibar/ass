@@ -1,0 +1,17 @@
+<div class="block_spacer">&nbsp;</div>
+
+<div id="archive">
+  <h3>Archive</h3>
+    <h4>Todays</h4>
+    <% Article.todays.each do |article| %>
+    <span><%= link_to h(article.title), :controller => "articles", :action => "show", :id => article.id %></span><br />
+    <% end %>
+    <h4>Yesterdays</h4>
+    <% Article.yesterdays.each do |article| %>
+    <span><%= link_to h(article.title), :controller => "articles", :action => "show", :id => article.id %></span><br />
+    <% end %>
+    <h4>Older</h4>
+    <% Article.older_then_yesterdays.each do |article| %>
+    <span><%= link_to h(article.title), :controller => "articles", :action => "show", :id => article.id %></span><br />
+    <% end %>
+</div>  
