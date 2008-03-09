@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
   
-  fixtures :articles, :comments, :authors, :images
+  fixtures :articles, :comments, :authors
   
   def test_should_have_comments
     article = articles(:article_with_comment)
@@ -33,12 +33,6 @@ class ArticleTest < ActiveSupport::TestCase
     article = articles(:article_with_author)
     assert_not_nil article.author, "Author should not be nil."
     assert_kind_of Author, article.author, "There should be an object of kind Author."
-  end
-  
-  def test_should_have_an_image
-    article = articles(:article_with_image)
-    assert_not_nil article.image, "Image should not be nil."
-    assert_kind_of Image, article.image, "There should be an object of kind Image."
   end
   
   def test_should_save_with_valid_attributes

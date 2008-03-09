@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :images
-
   map.resources :authors, :has_many => [:comments, :articles]
 
   map.resources :articles, :has_many => :comments, :has_one => :author

@@ -13,8 +13,8 @@ class Test::Unit::TestCase
     ActiveRecord::Base.enable_validation!    
   end
   
-  def login_user
-    @request.session[:user] = authors(:jessie)
+  def login_user(user = authors(:jessie))
+    @request.session[:user] = user
   end
   
 end
