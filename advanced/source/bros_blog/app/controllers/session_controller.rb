@@ -5,6 +5,7 @@ class SessionController < ApplicationController
       @author = Author.new
       render
     else
+      logger.debug "##### params[:author]: #{params[:author].inspect}"
       if @author = Author.authenticate(params[:author][:email], params[:author][:password])
         session.user = @author
         redirect_to articles_path
@@ -15,7 +16,8 @@ class SessionController < ApplicationController
   end
   
   def logout
-    
+    reset_session
+    redirect_to articles_path
   end
   
 end

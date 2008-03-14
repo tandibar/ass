@@ -19,7 +19,7 @@ class Test::Unit::TestCase
   
 end
 
-
+# Module for disable the AR validation temporarily
 module ValidationDisabler
   
   def self.included(base)

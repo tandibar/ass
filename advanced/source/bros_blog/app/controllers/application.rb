@@ -2,6 +2,10 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  include AuthenticationSystem
+  
+  layout "master"
+  
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details
@@ -18,22 +22,21 @@ class ApplicationController < ActionController::Base
       end
     end
   
-end
-
-module SessionUserExtension
-end
-
-class ActionController::Base
-  # include SessionUserExtension
-  class << session
-    def user=(user)
-      reset_session
-      session[:user] ||= {}
-      session[:user][:id], session[:user][:class] = user.id, user.class
-    end
-    
-    def user
-      session[:user][:class].camelize.constanize.send(:find, session[:user][:id])
-    end
-  end
+  private
+  
+    # def extend_session
+    #   class <<session
+    #     def user=(user)
+    #       self[:user] ||= {}
+    #       if user.kind_of? ActiveRecord::Base
+    #         self[:user][:id], self[:user][:class] = user.id, user.class.to_s
+    #       end
+    #     end
+    # 
+    #     def user
+    #       self[:user][:class].camelize.constantize.send(:find, self[:user][:id])
+    #     end
+    #   end
+    # end
+  
 end

@@ -1,0 +1,17 @@
+<% form_for @author, :url => login_path do |f| -%>
+  <fieldset id="login">
+    <legend>Login</legend>
+    
+    <p>
+      <%= f.label :email, "Email" %>
+      <%= f.text_field :email %>
+    </p>    
+
+    <p>
+      <%= f.label :password, "Password" %>
+      <%= f.password_field :password %>
+    </p>
+    
+  </fieldset>
+  <%= f.submit "Login", :disable_with => 'Logging in ...' %>
+<% end -%>
