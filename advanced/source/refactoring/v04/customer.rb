@@ -18,31 +18,21 @@ class Customer
     
     result = "Rental Record for #{name}:\n"
     
-    rentals.each do |current|
+    rentals.each do |rental|
       this_amount = 0
 
-      case current.movie.price_code
-      when Movie::REGULAR
-        this_amount += 2
-        this_amount += (current.days_rented - 2) * 1.5 if current.days_rented > 2
-      when Movie::NEW_RELEASE
-        this_amount += current.days_rented * 3
-      when Movie::CHILDREN
-        this_amount += 1.5
-        this_amount += (current.days_rented - 3) * 1.5 if current.days_rented > 3
-      end
-      
+      this_amount = rental.get_charge
       # add frequent renter points
       frequent_renter_points += 1
-      frequent_renter_points += 1 if current.movie.price_code == Movie::NEW_RELEASE && current.days_rented > 1
+      frequent_renter_points += 1 if rental.movie.price_code == Movie::NEW_RELEASE && rental.days_rented > 1
 
       # show figures for rental
-      result += "\t#{current.movie.title}\t#{this_amount}\n"
+      result += "\t#{rental.movie.title}\t#{this_amount}\n"
       total_amount += this_amount
     end
     
     # add footer lines
-    result += "Amount owed is #{total_amount}\n."
+    result += "Amount owed is #{total_amount}.\n"
     result += "You earnd #{frequent_renter_points} frequent renter points."
     
     return result

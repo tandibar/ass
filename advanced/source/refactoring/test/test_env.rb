@@ -1,4 +1,4 @@
-VERSION_TO_TEST = "v01"
+VERSION_TO_TEST = "v08"
 
 require 'test/unit'
 require "#{File.dirname(__FILE__)}/../#{VERSION_TO_TEST}/movie"

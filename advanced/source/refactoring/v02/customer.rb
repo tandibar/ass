@@ -21,17 +21,7 @@ class Customer
     rentals.each do |current|
       this_amount = 0
 
-      case current.movie.price_code
-      when Movie::REGULAR
-        this_amount += 2
-        this_amount += (current.days_rented - 2) * 1.5 if current.days_rented > 2
-      when Movie::NEW_RELEASE
-        this_amount += current.days_rented * 3
-      when Movie::CHILDREN
-        this_amount += 1.5
-        this_amount += (current.days_rented - 3) * 1.5 if current.days_rented > 3
-      end
-      
+      this_amount = amount_for(current)
       # add frequent renter points
       frequent_renter_points += 1
       frequent_renter_points += 1 if current.movie.price_code == Movie::NEW_RELEASE && current.days_rented > 1
@@ -42,7 +32,7 @@ class Customer
     end
     
     # add footer lines
-    result += "Amount owed is #{total_amount}\n."
+    result += "Amount owed is #{total_amount}.\n"
     result += "You earnd #{frequent_renter_points} frequent renter points."
     
     return result
@@ -53,4 +43,18 @@ class Customer
     attr_accessor :rentals
     attr_writer :name
     
+    def amount_for(current)
+      this_amount = 0
+      case current.movie.price_code
+      when Movie::REGULAR
+        this_amount += 2
+        this_amount += (current.days_rented - 2) * 1.5 if current.days_rented > 2
+      when Movie::NEW_RELEASE
+        this_amount += current.days_rented * 3
+      when Movie::CHILDREN
+        this_amount += 1.5
+        this_amount += (current.days_rented - 3) * 1.5 if current.days_rented > 3
+      end
+      return this_amount
+    end
 end
