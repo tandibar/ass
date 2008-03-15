@@ -35,15 +35,15 @@ class CustomerTest < Test::Unit::TestCase
     assert_equal "Rental Record for Die Hard Fan with Kid:\n\tDie Hard\t2\n\tDie Hard 2\t2\n\tDie Hard 3\t2\n\tDie Hard 4\t6\n\tPocahontas\t1.5\nAmount owed is 13.5.\nYou earnd 6 frequent renter points.", customer.statement
   end
   
-  # erst ab v08
-  def test_html_statement_creation_with_different_rentals
-    customer = Customer.new("Die Hard Fan with Kid")
-    customer << Rental.new(Movie.new("Die Hard", 0), 2)
-    customer << Rental.new(Movie.new("Die Hard 2", 0), 2)
-    customer << Rental.new(Movie.new("Die Hard 3", 0), 2)
-    customer << Rental.new(Movie.new("Die Hard 4", Movie::NEW_RELEASE), 2)
-    customer << Rental.new(Movie.new("Pocahontas", Movie::CHILDREN), 2)
-    
-    assert_equal "<h1>Rental Record for <em>Die Hard Fan with Kid</em>:</h1><ul><li>Die Hard: 2</li><li>Die Hard 2: 2</li><li>Die Hard 3: 2</li><li>Die Hard 4: 6</li><li>Pocahontas: 1.5</li></ul><p>You owe <em>13.5</em>.On this rental you earnd <em>6</em> frequent renter points.</p>", customer.html_statement
-  end
+  # sobald html_statement vorhanden ist sollte dieser Test hinzugefügt werden
+  # def test_html_statement_creation_with_different_rentals
+  #   customer = Customer.new("Die Hard Fan with Kid")
+  #   customer << Rental.new(Movie.new("Die Hard", 0), 2)
+  #   customer << Rental.new(Movie.new("Die Hard 2", 0), 2)
+  #   customer << Rental.new(Movie.new("Die Hard 3", 0), 2)
+  #   customer << Rental.new(Movie.new("Die Hard 4", Movie::NEW_RELEASE), 2)
+  #   customer << Rental.new(Movie.new("Pocahontas", Movie::CHILDREN), 2)
+  #   
+  #   assert_equal "<h1>Rental Record for <em>Die Hard Fan with Kid</em>:</h1><ul><li>Die Hard: 2</li><li>Die Hard 2: 2</li><li>Die Hard 3: 2</li><li>Die Hard 4: 6</li><li>Pocahontas: 1.5</li></ul><p>You owe <em>13.5</em>.On this rental you earnd <em>6</em> frequent renter points.</p>", customer.html_statement
+  # end
 end
