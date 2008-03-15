@@ -16,7 +16,7 @@ class Customer
     total_amount = 0.0
     frequent_renter_points = 0
     
-    result = "Rental Record for #{name}\n"
+    result = "Rental Record for #{name}:\n"
     
     rentals.each do |current|
       this_amount = 0
@@ -42,8 +42,8 @@ class Customer
     end
     
     # add footer lines
-    result += "Amount owed is #{total_amount}\n"
-    result += "You earnd #{frequent_renter_points} frequent renter points"
+    result += "Amount owed is #{total_amount}.\n"
+    result += "You earnd #{frequent_renter_points} frequent renter points."
     
     return result
   end
