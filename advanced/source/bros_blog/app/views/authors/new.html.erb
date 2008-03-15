@@ -1,25 +1,41 @@
-<h1>New author</h1>
+<h1>Signup</h1>
 
 <%= error_messages_for :author %>
 
-<% form_for(@author) do |f| %>
+<% form_for @author do |f| %>
+
   <p>
-    <b>Firstname</b><br />
+    <%= f.label :firstname, "Firstname" %>
     <%= f.text_field :firstname %>
   </p>
 
   <p>
-    <b>Lastname</b><br />
+    <%= f.label :lastname, "Lastname" %>
     <%= f.text_field :lastname %>
   </p>
 
   <p>
-    <b>Email</b><br />
+    <%= f.label :email, "Email" %>
     <%= f.text_field :email %>
   </p>
 
   <p>
-    <%= f.submit "Create" %>
+    <%= f.label :email_confirmation, "Email Confirmation" %>
+    <%= f.text_field :email_confirmation %>
+  </p>
+
+  <p>
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation, "Password Confirmation" %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <p>
+    <%= f.submit "Signup", :disable_with => 'Sending your data ...' %>
   </p>
 <% end %>
 

@@ -8,4 +8,7 @@ class Author < ActiveRecord::Base
   validates_presence_of :firstname
   validates_presence_of :lastname
   validates_presence_of :email
+  
+  validates_confirmation_of :email, :on => :create, :message => "should match confirmation"
+  validates_presence_of :email_confirmation, :on => :create, :message => "can't be blank"
 end

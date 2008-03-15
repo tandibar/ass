@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
-    @comment = Article.find(params[:article_id]).comments.build(params[:comment], session[:user])
+    @comment = Article.find(params[:article_id]).comments.build(params[:comment], session.user)
 
     respond_to do |format|
       if @comment.save
@@ -53,7 +53,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.xml
   def destroy
     begin
-      Article.find(params[:article_id]).comments.delete(Comment.find(params[:id]), session[:user])
+      Article.find(params[:article_id]).comments.delete(Comment.find(params[:id]), session.user)
       respond_to do |format|
         format.html { redirect_to(article_comments_url(params[:article_id])) }
         format.xml  { head :ok }

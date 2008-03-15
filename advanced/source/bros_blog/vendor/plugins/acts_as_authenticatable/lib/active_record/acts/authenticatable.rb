@@ -28,9 +28,10 @@ module ActiveRecord
             
             validates_presence_of :security_token, :if => Proc.new { |user| !user.verified? }
             validates_presence_of :token_expiry, :if => Proc.new { |user| !user.verified? }
-            validates_presence_of :password, :message => "password can't be blank", :if => :new_record?
-            validates_confirmation_of :password, :message => "password should match confirmation", :if => :new_record?
-            validates_length_of :password, :within => 5..40, :too_long => "password pick a shorter name", :too_short => "password pick a longer name", :if => :new_record_password_should_be_changed
+            validates_presence_of :password, :message => "can't be blank", :if => :new_record?
+            validates_presence_of :password_confirmation, :message => "can't be blank", :if => :new_record?
+            validates_confirmation_of :password, :message => "should match confirmation", :if => :new_record?
+            validates_length_of :password, :within => 5..40, :too_long => "pick a shorter name", :too_short => "pick a longer name", :if => :new_record_password_should_be_changed
             before_validation :create_security_token_and_its_expiry_date
             after_validation :crypt_password
           end
@@ -121,10 +122,7 @@ module ActiveRecord
           
         module ClassMethods
           def authenticate(login_credential, password)
-            # logger.debug("##### login_credential: #{login_credential}")
-            # logger.debug("##### login: #{login}")
             u = send("find_by_#{login}_and_verified", login_credential, true)
-            # logger.debug("##### u: #{u.inspect}")
             (u && u.salted_password == hashed(password, u.salt)) ? u : nil
           end
           

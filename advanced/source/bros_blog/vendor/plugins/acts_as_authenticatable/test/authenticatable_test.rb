@@ -119,6 +119,14 @@ class UserTest < Test::Unit::TestCase
     assert_equal old_password, jessie.salted_password
   end
   
+  def test_should_require_password_confirmation
+    user = User.new
+    user.password = "password"
+    user.password_confirmation = nil
+    assert !user.valid?
+    assert user.errors.invalid?(:password_confirmation)
+  end
+  
   def test_should_set_new_security_token_and_expiry_upon_email_change
     user = users(:john)
     old_security_token = user.security_token

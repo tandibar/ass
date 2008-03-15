@@ -13,8 +13,8 @@ class Test::Unit::TestCase
     ActiveRecord::Base.enable_validation!    
   end
   
-  def login_user(user = authors(:jessie))
-    @request.session[:user] = user
+  def login_an_author(author = Author.new(:email => 'susan.storm@fantasticfour.com'))
+    @request.session.instance_variable_set(:@current_user, author)
   end
   
 end

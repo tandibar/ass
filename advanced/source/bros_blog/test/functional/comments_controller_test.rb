@@ -35,7 +35,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   def test_should_create_author_comment_if_logged_in
-    login_user
+    login_an_author
     disable_validations do
       assert_difference('Comment.count') { post :create, :article_id => articles(:article_with_comment), :comment => {} }
     end
@@ -45,7 +45,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
   
   def test_should_deny_destroy_if_logged_in_but_not_author_of_article
-    login_user(authors(:author_with_articles))
+    login_an_author(authors(:author_with_articles))
     article = articles(:article_with_comment)
     delete :destroy, :article_id => article.id, :id => article.comments[0].id
     assert_response 401
@@ -59,7 +59,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
   
   def test_should_destroy_comment_only_for_logged_in_author_of_article
-    login_user
+    login_an_author(authors(:jessie))
     assert_difference('Comment.count', -1) do
       delete :destroy, :id => comments(:first_comment).id, :article_id => articles(:article_with_comment).id
     end
