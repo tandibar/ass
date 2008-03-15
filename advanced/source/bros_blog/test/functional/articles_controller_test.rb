@@ -5,6 +5,10 @@ class ArticlesControllerTest < ActionController::TestCase
 
   def test_should_get_index
     article = Article.new
+    author = Author.new
+    author.expects(:email).returns('test@email.com')
+    article.expects(:author).returns(author)
+    article.expects(:created_at).returns(Time.now)
     Article.expects(:find).with(:all).returns([article])
     
     get :index

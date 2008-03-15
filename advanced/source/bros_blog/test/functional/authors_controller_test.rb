@@ -26,6 +26,10 @@ class AuthorsControllerTest < ActionController::TestCase
     end
   end
   
+  def test_should_not_activate_without_activation_key
+    assert_raise(ActionController::RoutingError) { post :activation }
+  end
+  
   protected
   
     def create_user

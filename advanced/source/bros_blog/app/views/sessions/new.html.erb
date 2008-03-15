@@ -1,16 +1,18 @@
-<% form_for @author, :url => login_path do |f| -%>
+<% form_for @author, :url => session_path do |f| -%>
   <fieldset id="login">
     <legend>Login</legend>
     
-    <p>
-      <%= f.label :email, "Email" %>
-      <%= f.text_field :email %>
-    </p>    
+    <div class="column span-8">
+      <div>
+        <%= f.label :email, "Email" %>
+        <%= f.text_field :email, :class => 'text' %>
+      </div>    
 
-    <p>
-      <%= f.label :password, "Password" %>
-      <%= f.password_field :password %>
-    </p>
+      <div>
+        <%= f.label :password, "Password" %>
+        <%= f.password_field :password, :class => 'text' %>
+      </div>
+    </div>
     
   </fieldset>
   <%= f.submit "Login", :disable_with => 'Logging in ...' %>

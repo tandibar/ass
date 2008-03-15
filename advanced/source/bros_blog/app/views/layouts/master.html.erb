@@ -6,12 +6,12 @@
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <title>The Railsbrothers Blog: <%= controller.action_name %></title>
     <%= stylesheet_link_tag 'blueprint/screen' %>
-    <%= stylesheet_link_tag 'blueprint/print' %>
-    <%= stylesheet_link_tag 'blueprint/plugins/fancy-type/fancy-type.css' %>
+    <%= stylesheet_link_tag 'blueprint/print', :media => 'print' %>
+    <%= stylesheet_link_tag 'blueprint/plugins/fancy-type/screen.css' %>
 
     <!--[if IE]><link rel="stylesheet" href="stylesheets/blueprint/lib/ie.css" type="text/css" media="screen, projection"><![endif]-->
     <!-- Import fancy-type plugin for the sample section. -->
-  	<link rel="stylesheet" href="css/blueprint/plugins/fancy-type/fancy-type.css" type="text/css" media="screen, projection">
+  	<link rel="stylesheet" href="stylesheets/blueprint/plugins/fancy-type/fancy-type.css" type="text/css" media="screen, projection">
     <%= stylesheet_link_tag 'bros_blog' %>
   </head>
   <body>
@@ -20,10 +20,12 @@
   	  <div id="header" class="prepend-1 append-1">
     		<div class="prepend-1"><h1 id="blog_title"><%= link_to "The Railsbrothers Blog", root_path %></h1></div>
         <div class="column span-14 prepend-1"><h2 id="subline" class="alt">&lt;think first, code later&gt;</h2></div>
-  		  <hr />
   		  <%- if session.user -%>
-        <p>Welcome <%= session.user.email %> | <%= link_to "Logout", logout_path %></p>
+        <p>Welcome <span class="alt"><%= session.user.send(session.user.login) %></span> | <%= link_to "Logout", logout_path %></p>
+        <%- else -%>
+        <p><%= link_to 'Login', login_path %></p>
         <%- end -%>
+  		  <hr />
   		</div>
 
   		<div class="column span-22 prepend-1 append-1">
