@@ -3,7 +3,7 @@ class Article < ActiveRecord::Base
   
   belongs_to :image
   belongs_to :author
-  has_many :comments do
+  has_many :comments, :dependent => :destroy do
     def build(attributes = {}, author = nil)
       if author
         author.comments.build(attributes.merge(:article => proxy_owner))

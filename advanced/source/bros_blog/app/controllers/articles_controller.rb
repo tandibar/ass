@@ -86,15 +86,4 @@ class ArticlesController < ApplicationController
     end
   end
   
-  
-  private
-    
-    def author_logged_in
-      unless session[:user]
-        render :template => "layouts/401", :status => 401
-      else
-        true
-      end
-    end
-    
 end

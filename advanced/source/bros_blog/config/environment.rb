@@ -26,7 +26,6 @@ Rails::Initializer.run do |config|
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
   # Add additional load paths for your own custom dirs
-  # config.load_paths += %W( #{RAILS_ROOT}/extras )
   config.load_paths += Dir["#{RAILS_ROOT}/vendor/gems/**"].map do |dir| 
     File.directory?(lib = "#{dir}/lib") ? lib : dir
   end
@@ -40,14 +39,14 @@ Rails::Initializer.run do |config|
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
-    :session_key => '_bros_blog_session',
-    :secret      => 'dad99850f90e6d8507bf99a85e18e1d6f11d00bcf9f505859652ee6c48b7db01679341402a5636a0a62a5f4fe4247108be77f1893be2d64e68cab72c64e66ef3'
+    :session_key => '_bros_blog_session'# ,
+    #     :secret      => 'dad99850f90e6d8507bf99a85e18e1d6f11d00bcf9f505859652ee6c48b7db01679341402a5636a0a62a5f4fe4247108be77f1893be2d64e68cab72c64e66ef3'
   }
 
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
   # (create the session table with 'rake db:sessions:create')
-  # config.action_controller.session_store = :active_record_store
+  config.action_controller.session_store = :file_store
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,

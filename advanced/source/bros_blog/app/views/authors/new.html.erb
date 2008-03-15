@@ -1,45 +1,41 @@
-<h1>New author</h1>
+<h1>Signup</h1>
 
 <%= error_messages_for :author %>
 
-<% form_for(@author) do |f| %>
+<% form_for @author do |f| %>
+
   <p>
-    <b>Firstname</b><br />
+    <%= f.label :firstname, "Firstname" %>
     <%= f.text_field :firstname %>
   </p>
 
   <p>
-    <b>Lastname</b><br />
+    <%= f.label :lastname, "Lastname" %>
     <%= f.text_field :lastname %>
   </p>
 
   <p>
-    <b>Email</b><br />
+    <%= f.label :email, "Email" %>
     <%= f.text_field :email %>
   </p>
 
   <p>
-    <b>Salt</b><br />
-    <%= f.text_field :salt %>
+    <%= f.label :email_confirmation, "Email Confirmation" %>
+    <%= f.text_field :email_confirmation %>
   </p>
 
   <p>
-    <b>Salted password</b><br />
-    <%= f.text_field :salted_password %>
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %>
   </p>
 
   <p>
-    <b>Token</b><br />
-    <%= f.text_field :token %>
+    <%= f.label :password_confirmation, "Password Confirmation" %>
+    <%= f.password_field :password_confirmation %>
   </p>
 
   <p>
-    <b>Token expiry</b><br />
-    <%= f.datetime_select :token_expiry %>
-  </p>
-
-  <p>
-    <%= f.submit "Create" %>
+    <%= f.submit "Signup", :disable_with => 'Sending your data ...' %>
   </p>
 <% end %>
 

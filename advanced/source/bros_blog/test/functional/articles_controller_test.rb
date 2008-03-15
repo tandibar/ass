@@ -19,7 +19,7 @@ class ArticlesControllerTest < ActionController::TestCase
   end
 
   def test_should_get_new_if_logged_in
-    login_user
+    login_an_author
     get :new
     assert_response :success
   end
@@ -31,7 +31,7 @@ class ArticlesControllerTest < ActionController::TestCase
   end
   
   def test_should_create_article
-    login_user
+    login_an_author
     disable_validations do
       assert_difference('Article.count') { post :create, :article => {  }}
     end
@@ -51,7 +51,7 @@ class ArticlesControllerTest < ActionController::TestCase
   end
   
   def test_should_get_edit_if_logged_in
-    login_user
+    login_an_author
     Article.expects(:find).with("1").returns(Article.new)
     get :edit, :id => 1
     assert_response :success
@@ -64,7 +64,7 @@ class ArticlesControllerTest < ActionController::TestCase
   end
 
   def test_should_update_article
-    login_user
+    login_an_author
     article = Article.new
     Article.expects(:find).with("1").returns(article)
     article.expects(:update_attributes).with("title" => "Mocking Title to save").returns(true)
@@ -79,7 +79,7 @@ class ArticlesControllerTest < ActionController::TestCase
   end
 
   def test_should_destroy_article
-    login_user
+    login_an_author
     article = Article.new
     Article.expects(:find).with("1").returns(article)
     article.expects(:destroy)

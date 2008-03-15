@@ -1,48 +1,37 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class AuthorsControllerTest < ActionController::TestCase
-  
-  fixtures :authors
-  
-  def test_should_get_index
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:authors)
+
+  def test_should_have_signup_route
+    assert_routing '/signup', :controller => 'authors', :action => 'new'
   end
 
-  def test_should_get_new
+  def test_should_show_signup_page
     get :new
-    assert_response :success
+    assert_response :success, @response.body
+    assert_template 'new'
   end
-
-  def test_should_create_author
-    assert_difference('Author.count') do
-      post :create, :author => { }
+  
+  def test_should_signup_new_author_and_send_confirmation_email
+    assert_difference "Author.count", 1 do
+      create_user
     end
-
-    assert_redirected_to author_path(assigns(:author))
   end
-
-  def test_should_show_author
-    get :show, :id => authors(:one).id
-    assert_response :success
-  end
-
-  def test_should_get_edit
-    get :edit, :id => authors(:one).id
-    assert_response :success
-  end
-
-  def test_should_update_author
-    put :update, :id => authors(:one).id, :author => { }
-    assert_redirected_to author_path(assigns(:author))
-  end
-
-  def test_should_destroy_author
-    assert_difference('Author.count', -1) do
-      delete :destroy, :id => authors(:one).id
+  
+  def test_should_not_signup_if_author_to_signup_is_invalid
+    assert_no_difference "Author.count" do
+      post :create
+      assert_response :success, @response.body
+      assert_template 'new'
     end
-
-    assert_redirected_to authors_path
   end
+  
+  protected
+  
+    def create_user
+      post :create, :author => {:firstname => 'Richard', :lastname => 'Reed', :email => 'richard.reed@ff.org', :email_confirmation => 'richard.reed@ff.org', :password => 'password', :password_confirmation => 'password' }
+      assert_redirected_to author_path(assigns(:author))
+    end
+    
+  
 end

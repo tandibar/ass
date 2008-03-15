@@ -13,13 +13,13 @@ class Test::Unit::TestCase
     ActiveRecord::Base.enable_validation!    
   end
   
-  def login_user
-    @request.session[:user] = authors(:jessie)
+  def login_an_author(author = Author.new(:email => 'susan.storm@fantasticfour.com'))
+    @request.session.instance_variable_set(:@current_user, author)
   end
   
 end
 
-
+# Module for disable the AR validation temporarily
 module ValidationDisabler
   
   def self.included(base)

@@ -34,4 +34,20 @@ class AuthorTest < ActiveSupport::TestCase
     assert_kind_of Array, author.comments, "Comments of Author should be an Array."
   end
   
+  def test_should_confirm_email_on_create
+    author = Author.new
+    author.email = "thesameemail@test.com"
+    author.email_confirmation = "not_thesameemail@test.com"
+    assert !author.save, "Author should be not save."
+    assert author.errors.invalid?(:email), "Confirmation of Email should be invalid."
+  end
+  
+  def test_should_require_confirmation_of_email
+    author = Author.new
+    author.email = "thesameemail@test.com"
+    author.email_confirmation = nil
+    assert !author.save, "Author should be not save."
+    assert author.errors.invalid?(:email_confirmation), "Confirmation of Email should be invalid."
+  end
+  
 end

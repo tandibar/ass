@@ -1,12 +1,16 @@
 class CommentsController < ApplicationController
+
+  before_filter :author_logged_in, :except => [ :index, :new, :create ]
+  
   # GET /comments
   # GET /comments.xml
   def index
-    @comments = Article.find(params[:article_id]).comments
-
     respond_to do |format|
       format.html { render :template => 'layouts/404', :status => 404 }
-      format.xml  { render :xml => @comments }
+      format.xml  do
+        @comments = Article.find(params[:article_id]).comments
+        render :xml => @comments
+      end
     end
   end
 
@@ -31,7 +35,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
-    @comment = Article.find(params[:article_id]).comments.build(params[:comment], session[:user])
+    @comment = Article.find(params[:article_id]).comments.build(params[:comment], session.user)
 
     respond_to do |format|
       if @comment.save
@@ -48,14 +52,14 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.xml
   def destroy
-    
-    @comment = Article.find(params[:article_id])
-    Comment.find(params[:id])
-    @comment.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(article_url(@comment.article.id)) }
-      format.xml  { head :ok }
+    begin
+      Article.find(params[:article_id]).comments.delete(Comment.find(params[:id]), session.user)
+      respond_to do |format|
+        format.html { redirect_to(article_comments_url(params[:article_id])) }
+        format.xml  { head :ok }
+      end
+    rescue Article::CommentDeletionNotAllowed
+      render :template => "layouts/401", :status => 401
     end
   end
 end
