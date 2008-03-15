@@ -15,7 +15,7 @@ class RentalTest < Test::Unit::TestCase
     assert_raise(NoMethodError) { rental.movie = Movie.new("Die Hard 2", 2) }
   end
   
-  def test_movie_setter_is_private
+  def test_days_rented_setter_is_private
     rental = Rental.new(Movie.new("Die Hard", 1), 2)
     assert_raise(NoMethodError) { rental.days_rented = 3 }
   end
