@@ -16,5 +16,5 @@ Der Kunde hat bereits bekannt gegeben, dass in absehbarer Zeit weitere Movie-Tye
 ## Quellen
 
 * Refactorings: http://www.refactoring.com/catalog/index.html
-* Quellcode: http://www.railsbros.de/advanced/customer-movie-rental.zip
+* Quellcode: http://railsbros.de/advanced/customer-movie-rental.zip
 * Smells to Refactorings - Quick Reference Guide
