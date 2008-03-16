@@ -20,9 +20,7 @@
     		<div class="prepend-1"><h1 id="blog_title"><%= link_to "The Railsbrothers Blog", root_path %></h1></div>
         <div class="column span-14 prepend-1"><h2 id="subline" class="alt">&lt;think first, code later&gt;</h2></div>
   		  <%- if session.user -%>
-        <p>Welcome <span class="alt"><%= session.user.send(session.user.login) %></span> | <%= link_to "Logout", logout_path %></p>
-        <%- else -%>
-        <p><%= link_to 'Login', login_path %></p>
+        <p>Welcome <span class="alt"><%= session.user.email %></span></p>
         <%- end -%>
   		  <hr />
   		</div>

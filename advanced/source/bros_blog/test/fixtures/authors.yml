@@ -10,10 +10,10 @@ author_with_articles:
   firstname: Hans
   lastname: Wurst
   email: hans@wurst.de
-  salted_password: TBD
+  password: TBD
 
 author_with_comments:
   firstname: Kai
   lastname: Knackstedt
   email: kai@spasskasse.de
-  salted_password: TBD
+  password: TBD

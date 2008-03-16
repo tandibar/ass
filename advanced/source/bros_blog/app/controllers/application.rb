@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   protected
     
     def author_logged_in
+      return true if session.user
       if user = authenticate_with_http_basic { |username, password| Author.authenticate(username, password) }
         session.user = user
       else

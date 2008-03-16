@@ -1,19 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
   map.root        :controller => 'articles'
 
-  map.signup      '/signup', :controller => 'authors', :action => 'new'
-
   map.resources   :authors# , :has_many => [:comments, :articles]
 
   map.resources   :articles, :has_many => :comments, :has_one => :author
   
-  map.activation  '/activation/:activation_code', :controller => 'authors', :action => 'activate', :activation_code => nil
-
-  map.login       '/login', :controller => 'sessions', :action => 'new'
-  map.logout      '/logout', :controller => 'sessions', :action => 'destroy'
-  
-  map.resource    :session
-
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

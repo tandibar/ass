@@ -42,20 +42,12 @@ class AuthorTest < ActiveSupport::TestCase
     assert author.errors.invalid?(:email), "Confirmation of Email should be invalid."
   end
   
-  def test_should_require_confirmation_of_email
-    author = Author.new
-    author.email = "thesameemail@test.com"
-    author.email_confirmation = nil
-    assert !author.save, "Author should be not save."
-    assert author.errors.invalid?(:email_confirmation), "Confirmation of Email should be invalid."
-  end
-  
   def test_should_authenticate_author_with_valid_credentials
     assert Author.authenticate('jessie.summers@hotstuff.com', 'jessie69')
   end
   
   def test_should_not_authenticate_author_without_valid_credentials
-    assert_not_nil Author.authenticate('jessie.summers@hotstuff.com', 'wrongpass')
+    assert_nil Author.authenticate('jessie.summers@hotstuff.com', 'wrongpass')
   end
   
   def test_should_return_email_when_called_to_string_method
