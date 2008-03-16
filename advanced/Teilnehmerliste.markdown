@@ -14,5 +14,4 @@ Sebastian		  Cohnen			  mim102@gm.fh-koeln.de
 Stephan				Pavlovic			mim113@gm.fh-koeln.de
 Stephan				Welchering		stephan.welchering@gmx.de
 Tim				    Schneider			timschneider@web.de
-Viktor				Klassen				klassen23@googlemail.com
 Ede           Litau         eduardlitau@gmail.com

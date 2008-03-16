@@ -15,7 +15,7 @@ class ArticlesControllerTest < ActionController::TestCase
     assert_response :success
     assert_not_nil assigns(:articles)
   end
-
+  
   def test_should_deny_access_to_new
     get :new
     assert_response 401
