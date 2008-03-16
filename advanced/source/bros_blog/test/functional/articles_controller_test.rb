@@ -9,6 +9,7 @@ class ArticlesControllerTest < ActionController::TestCase
     author.expects(:email).returns('test@email.com')
     article.expects(:author).returns(author)
     article.expects(:created_at).returns(Time.now)
+    article.expects(:comments).returns(mock(:count => 2))
     Article.expects(:find).with(:all).returns([article])
     
     get :index
@@ -43,8 +44,7 @@ class ArticlesControllerTest < ActionController::TestCase
   end
 
   def test_should_show_article
-    Article.expects(:find).with("1").returns(Article.new)
-    get :show, :id => 1
+    get :show, :id => articles(:article_with_comment)
     assert_response :success
   end
   

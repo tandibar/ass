@@ -50,4 +50,9 @@ class AuthorTest < ActiveSupport::TestCase
     assert author.errors.invalid?(:email_confirmation), "Confirmation of Email should be invalid."
   end
   
+  def test_should_return_email_when_called_to_string_method
+    author = Author.new(:email => "jonny.storm@ff.com")
+    assert_equal "jonny.storm@ff.com", author.to_s
+  end
+  
 end

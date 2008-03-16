@@ -1,6 +1,15 @@
 <div class="article">
-  <div><span><%= link_to 'Edit', edit_article_path(article) %>&nbsp;|&nbsp;<%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %></span><h3><%=h article.title %></h3></div>
-  <div><p>written by <strong><%=h article.author.email %></strong>, <%=h time_ago_in_words(article.created_at) %> ago</p></div>
-  <p><%=h article.content %></p>
+  <div>
+    <span><%= link_to 'Edit', edit_article_path(article) %>&nbsp;|
+      &nbsp;<%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %></span>
+    <h3><%= link_to (h article.title), article_path(article) %></h3>
+  </div>
+  <div>
+    <p>written by <strong><%=h article.author.email %></strong>, <%=h time_ago_in_words(article.created_at) %> ago</p>
+  </div>
+  <p><%= truncate((h article.content), 300, ("&nbsp;...&nbsp;" + (link_to 'read all >>', article_path(article)))) %></p>
+  <div>
+    <p><%= pluralize(article.comments.count, 'comment') %></p>
+  </div>
   <hr />
 </div>

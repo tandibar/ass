@@ -1,4 +1,4 @@
-<% form_for @author, :url => session_path do |f| -%>
+<%- form_for @author, :url => session_path do |f| -%>
   <fieldset id="login">
     <legend>Login</legend>
     
@@ -16,4 +16,4 @@
     
   </fieldset>
   <%= f.submit "Login", :disable_with => 'Logging in ...' %>
-<% end -%>
+<%- end -%>

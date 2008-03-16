@@ -1,0 +1,6 @@
+    <div class="comment" id="<%= dom_id(comment) %>">
+      <h3><span class="alt">posted</span> by <%= h comment.author %>, <%= h time_ago_in_words(comment.created_at) %> ago</h3>
+      <div class="comment-content">
+        <%= h comment.content %>
+      </div>
+    </div>

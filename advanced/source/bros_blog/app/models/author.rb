@@ -11,4 +11,8 @@ class Author < ActiveRecord::Base
   
   validates_confirmation_of :email, :on => :create, :message => "should match confirmation"
   validates_presence_of :email_confirmation, :on => :create, :message => "can't be blank"
+  
+  def to_s
+    email
+  end
 end

@@ -1,23 +1,24 @@
-<p>
-  <b>Title:</b>
-  <%=h @article.title %>
-</p>
+<div class="article" id="<%= dom_id(@article) %>">
+  
+  <h2><%=h @article.title %></h2>
+  
+  <div class="article-date">
+    <p>written by <strong><%=h @article.author.email %></strong>, <%=h time_ago_in_words(@article.created_at) %> ago</p>
+  </div>
+  
+  <div class="article-content">
+    <%=h @article.content %>
+  </div>
+  
+  <div class="links">
+    <hr />
+    <p><%= link_to 'Edit', edit_article_path(@article) %> |
+    <%= link_to 'Back', articles_path %></p>
+  </div>
+  
+</div>
 
-<p>
-  <b>Content:</b>
-  <%=h @article.content %>
-</p>
-
-<p>
-  <b>Image:</b>
-  <%=h @article.image_id %>
-</p>
-
-<p>
-  <b>Author:</b>
-  <%=h @article.author_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<div class="article-comments prepend-1">
+  <div><%= link_to "New Comment", new_article_comment_path(@article) %><h2>Comments</h2></div>
+  <%= render :partial => 'comment', :collection => @article.comments %>
+</div>
