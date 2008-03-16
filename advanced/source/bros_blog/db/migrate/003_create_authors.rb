@@ -4,10 +4,7 @@ class CreateAuthors < ActiveRecord::Migration
       t.string :firstname
       t.string :lastname
       t.string :email
-      t.string :salt
-      t.string :salted_password
-      t.string :token
-      t.datetime :token_expiry
+      t.string :password
 
       t.timestamps
     end

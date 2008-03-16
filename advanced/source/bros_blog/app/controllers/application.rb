@@ -15,10 +15,10 @@ class ApplicationController < ActionController::Base
   protected
     
     def author_logged_in
-      unless session.user
-        render :template => "layouts/401", :status => 401
+      if user = authenticate_with_http_basic { |username, password| Author.authenticate(username, password) }
+        session.user = user
       else
-        true
+        request_http_basic_authentication
       end
     end
   
