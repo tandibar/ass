@@ -36,9 +36,10 @@ class ArticlesControllerTest < ActionController::TestCase
   end
   
   def test_should_create_article
-    login_an_author
+    login_an_author(authors(:jessie))
+    get :index # This is required to init the session and the controller
     disable_validations do
-      assert_difference('Article.count') { post :create, :article => {  }}
+      assert_difference("@controller.session.user.articles.count") { post :create, :article => { } }
     end
     assert_redirected_to article_path(assigns(:article))
   end
