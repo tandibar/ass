@@ -8,9 +8,4 @@ class AnonymousCommentTest < ActiveSupport::TestCase
     assert comment.errors.invalid?(:author_email), "Author Email is not invalid."
   end
   
-  def test_should_delegate_the_call_to_author_to_the_auther_email
-    comment = AnonymousComment.new(:author_email => "ben.grimm@ff.com")
-    assert_equal comment.author, "ben.grimm@ff.com"
-  end
-  
 end

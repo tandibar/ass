@@ -11,6 +11,7 @@
 
     <!--[if IE]><link rel="stylesheet" href="stylesheets/blueprint/lib/ie.css" type="text/css" media="screen, projection"><![endif]-->
     <!-- Import fancy-type plugin for the sample section. -->
+  	<link rel="stylesheet" href="stylesheets/blueprint/plugins/fancy-type/fancy-type.css" type="text/css" media="screen, projection">
     <%= stylesheet_link_tag 'bros_blog' %>
   </head>
   <body>
@@ -20,7 +21,9 @@
     		<div class="prepend-1"><h1 id="blog_title"><%= link_to "The Railsbrothers Blog", root_path %></h1></div>
         <div class="column span-14 prepend-1"><h2 id="subline" class="alt">&lt;think first, code later&gt;</h2></div>
   		  <%- if session.user -%>
-        <p>Welcome <span class="alt"><%= session.user.email %></span></p>
+        <p>Welcome <span class="alt"><%= session.user.send(session.user.login) %></span> | <%= link_to "Logout", logout_path %></p>
+        <%- else -%>
+        <p><%= link_to 'Login', login_path %></p>
         <%- end -%>
   		  <hr />
   		</div>
@@ -38,7 +41,7 @@
     		</div>
 
     		<div class="column span-7 last">
-    			<h3>Navigation</h3>
+    			<h3>A <span class="alt">Simple</span> Sidebar</h3>
     		</div>
 
   		</div>

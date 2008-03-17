@@ -9,7 +9,6 @@ class ArticlesControllerTest < ActionController::TestCase
     author.expects(:email).returns('test@email.com')
     article.expects(:author).returns(author)
     article.expects(:created_at).returns(Time.now)
-    article.expects(:comments).returns(mock(:count => 2))
     Article.expects(:find).with(:all).returns([article])
     
     get :index
@@ -20,7 +19,7 @@ class ArticlesControllerTest < ActionController::TestCase
   def test_should_deny_access_to_new
     get :new
     assert_response 401
-    # assert_template "layouts/401"
+    assert_template "layouts/401"
   end
 
   def test_should_get_new_if_logged_in
@@ -32,27 +31,28 @@ class ArticlesControllerTest < ActionController::TestCase
   def test_should_deny_access_to_create
     post :create, :article => {  }
     assert_response 401
-    # assert_template "layouts/401"
+    assert_template "layouts/401"
   end
   
   def test_should_create_article
     login_an_author(authors(:jessie))
-    get :index # This is required to init the session and the controller
+    get :index
     disable_validations do
-      assert_difference("@controller.session.user.articles.count") { post :create, :article => { } }
+      assert_difference('@controller.session.user.articles.count') { post :create, :article => {  }}
     end
     assert_redirected_to article_path(assigns(:article))
   end
 
   def test_should_show_article
-    get :show, :id => articles(:article_with_comment)
+    Article.expects(:find).with("1").returns(Article.new)
+    get :show, :id => 1
     assert_response :success
   end
   
   def test_should_deny_access_to_edit
     get :edit, :id => 1
     assert_response 401
-    # assert_template "layouts/401"
+    assert_template "layouts/401"
   end
   
   def test_should_get_edit_if_logged_in
@@ -65,7 +65,7 @@ class ArticlesControllerTest < ActionController::TestCase
   def test_should_deny_access_to_update
     put :update, :id => 1
     assert_response 401
-    # assert_template "layouts/401"
+    assert_template "layouts/401"
   end
 
   def test_should_update_article
@@ -80,7 +80,7 @@ class ArticlesControllerTest < ActionController::TestCase
   def test_should_deny_access_to_destroy
     delete :destroy, :id => 1
     assert_response 401
-    # assert_template "layouts/401"
+    assert_template "layouts/401"
   end
 
   def test_should_destroy_article
